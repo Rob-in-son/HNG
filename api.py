@@ -29,15 +29,11 @@ def get_user():
 
     user_data["current_day"] = current_day
     user_data["utc_time"] = utc_time
-    user_data["status_code"] = 200
-    
-    dictionary= user_data
-    unordered_dict = json.dumps(dictionary)
+    user_data["github_file_url"] = "https://github.com/Rob-in-son/HNG/blob/main/main.py"
+    user_data["github_repo_url"] = "https://github.com/Rob-in-son/HNG.git"
 
-    #placeholder = '_'*(len(unordered_dict)-2)  # Create a placeholder, -2 due to ""
-    #ordered_dict = jsonify(placeholder)  # This needs to be the same length as the response
-    #ordered_dict.unordered_dict[0] = unordered_dict + '\n' +  # Replace with the actual response
-    
+    user_data["status_code"] = 200
+
     return user_data
 
 

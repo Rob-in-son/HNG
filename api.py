@@ -4,8 +4,8 @@ from collections import OrderedDict
 
 app = Flask(__name__)
 
-@app.route("/get_user/")
-def get_user():
+@app.route("/hng_api/")
+def hng_api():
     #current_day
     day = datetime.datetime.now()
     current_day = (day.strftime("%A"))
@@ -16,7 +16,7 @@ def get_user():
      
     #user_data_dictionary
     user_data = {}
-    
+
     #Get slack_name and track
     slack_name = request.args.get("slack_name")
     if slack_name:

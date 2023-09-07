@@ -5,7 +5,7 @@ from collections import OrderedDict
 app = Flask(__name__)
 
 @app.route("/api")
-def hng_api():
+def api():
     #current_day
     day = datetime.datetime.now()
     current_day = (day.strftime("%A"))

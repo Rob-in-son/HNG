@@ -29,13 +29,12 @@ def get_user():
 
     user_data["current_day"] = current_day
     user_data["utc_time"] = utc_time
-    user_data["github_file_url"] = "https://github.com/Rob-in-son/HNG/blob/main/main.py"
+    user_data["github_file_url"] = "https://github.com/Rob-in-son/HNG/blob/main/api.py"
     user_data["github_repo_url"] = "https://github.com/Rob-in-son/HNG.git"
 
     user_data["status_code"] = 200
 
     return user_data
-
 
 if __name__ == "__main__":
     app.run(debug=True)

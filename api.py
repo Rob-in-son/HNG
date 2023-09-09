@@ -23,15 +23,14 @@ def api():
       user_data["slack_name"] = slack_name
 
     track = request.args.get("track")
-
     if track:
       user_data["track"] = track
-
+    
+    #User_data dictionary
     user_data["current_day"] = current_day
     user_data["utc_time"] = utc_time
     user_data["github_file_url"] = "https://github.com/Rob-in-son/HNG/blob/main/api.py"
     user_data["github_repo_url"] = "https://github.com/Rob-in-son/HNG.git"
-
     user_data["status_code"] = 200
 
     return user_data

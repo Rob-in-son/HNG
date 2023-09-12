@@ -30,7 +30,6 @@ class Person(db.Model):
 with app.app_context():
     db.create_all()
 
-
 #Product  Schema
 class PersonSchema(ma.Schema):
     class Meta:
@@ -73,9 +72,22 @@ def update_person(user_id):
 
     return person_schema.jsonify(person)
 
+#Deleting a person.
+@app.route("/api/<user_id>", methods= ["DELETE"])
+def delete_persons(user_id):
+    person = Person.query.get(user_id)
+    db.session.delete(person)
+    db.session.commit()
+    
+    return person_schema.jsonify(person)
 
 
-
+#Get all persons
+@app.route("/api/", methods= ["GET"])
+def all_persons():
+    all_person = Person.query.all()
+    result = persons_schema.dump(all_person)
+    return jsonify(result)
 
 # Run server
 if __name__ == "__main__":

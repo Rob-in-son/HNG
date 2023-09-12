@@ -11,7 +11,7 @@ app = Flask(__name__)
 basedir = os.path.abspath(os.path.dirname(__file__))
 
 #Database
-app.config['SQLALCHEMY_DATABASE_URI'] = 'Sqlite:///' + os.path.join(basedir, 'db.sqlite')
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'db.sqlite')
 app.config['SQLACHEMY_TRACK_MODIFICATIONS'] = False
 #Init db
 db = SQLAlchemy(app)
@@ -22,27 +22,24 @@ ma = Marshmallow(app)
 class Person(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String, unique=True)
-    track = db.Column(db.String(200))
-    gender = db.Column(db.String)
-    nationality = db.Column(db.String)
 
-    def __init__(self, name, track, gender, nationality):
+    def __init__(self, name):
         self.name = name
-        self.track = track 
-        self.gender = gender
-        self. nationality = nationality 
 
+# Create the database tables
+with app.app_context():
+    db.create_all()
+
+#Product  Schema
 class PersonSchema(ma.Schema):
     class Meta:
-        fields = ("id", "name", "track", "gender", "nationality")
+        fields = ("id", "name")
 
 #Init Schema
-
+person_schema = PersonSchema()
+persons_schema = PersonSchema(many=True)
 
 
 # Run server
 if __name__ == "__main__":
     app.run(debug=True)
-
-
-

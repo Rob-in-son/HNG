@@ -30,6 +30,7 @@ class Person(db.Model):
 with app.app_context():
     db.create_all()
 
+
 #Product  Schema
 class PersonSchema(ma.Schema):
     class Meta:
@@ -39,6 +40,17 @@ class PersonSchema(ma.Schema):
 person_schema = PersonSchema()
 persons_schema = PersonSchema(many=True)
 
+
+@app.route("/person", methods= ["POST"])
+def add_person():
+    name = request.json(name)
+    
+    new_person = Person(name)
+
+    db.session.add(new_person)
+    db.session.commit()
+
+    return person_schema.jsonify(new_person)
 
 # Run server
 if __name__ == "__main__":

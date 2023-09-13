@@ -107,6 +107,10 @@ def update_person(user_id):
         
         #get field from request body
         name = request.json['name']
+
+                # Check if 'name' is ""
+        if name is name.strip() == "":
+            return jsonify({"error": "Name field must not be empty"}), 400
        
         # Check if 'name' is missing
         if name is None:

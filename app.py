@@ -122,7 +122,7 @@ def delete_persons(user_id):
         db.session.delete(person)
         db.session.commit()
         
-        return person_schema.jsonify(person)
+        return jsonify({"msg": "User has been deleted successfully"})
     
     except Exception as e:
         return jsonify({"error": str(e)}), 500 

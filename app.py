@@ -45,7 +45,14 @@ persons_schema = PersonSchema(many=True)
 def add_person():
     try:
         name = request.json['name']
-
+    
+        # Check if 'name' is ""
+        if name is name.strip() == "":
+            return jsonify({"error": "Name field must not be empty"}), 400
+        
+        #Check if name is empty
+        if name is None:
+            return jsonify({"error": "Name field must not be empty"}), 400
         # Check if 'name' is a string
         if not isinstance(name, str):
             raise ValueError("Name must be a string")
@@ -79,7 +86,7 @@ def get_persons(user_id):
 
         # Check if person is None (not found)
         if person is None:
-            return jsonify({"error": "User not found"}), 404
+            return jsonify({"error": "Person not found"}), 404
         
         result = person_schema.dump(person)
         return jsonify(result)
@@ -96,10 +103,15 @@ def update_person(user_id):
         
         #check is user exist
         if person is None:
-            return jsonify({"error": "User not found"}), 404
+            return jsonify({"error": "Person not found"}), 404
         
         #get field from request body
         name = request.json['name']
+       
+        # Check if 'name' is missing
+        if name is None:
+            return jsonify({"error": "Name field is required"}), 400
+        
         #Get a new person to submit to the database
         person.name = name
         #save

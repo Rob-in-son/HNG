@@ -2,6 +2,7 @@ from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
 import os
+import re
 
 
 # Init app
@@ -42,44 +43,89 @@ persons_schema = PersonSchema(many=True)
 #Adding a new person. 
 @app.route("/api", methods= ["POST"])
 def add_person():
-    name = request.json['name']
-    
-    new_person = Person(name)
+    try:
+        name = request.json['name']
 
-    db.session.add(new_person)
-    db.session.commit()
+        # Check if 'name' is a string
+        if not isinstance(name, str):
+            raise ValueError("Name must be a string")
+        
+        # Check if the name already exists in the database
+        existing_person = Person.query.filter_by(name=name).first()
+        if existing_person:
+            return jsonify({"error": "Name already exists"}), 400
+        
+        if not re.match("^[A-Za-z]+$", name):
+            raise ValueError("Name must contain only letters")
+        
+        new_person = Person(name)
 
-    return person_schema.jsonify(new_person)
+        db.session.add(new_person)
+        db.session.commit()
+
+        return person_schema.jsonify(new_person)
+ 
+    except KeyError:
+        return jsonify({"error": "Name is missing in the request"}), 400
+
+    except ValueError as e:
+        return jsonify({"error": str(e)}), 400
 
 #Fetching details of a person.
 @app.route("/api/<user_id>", methods= ["GET"])
 def get_persons(user_id):
-    person = Person.query.get(user_id)
-    result = person_schema.dump(person)
-    return jsonify(result)
+    try:
+        person = Person.query.get(user_id)
 
+        # Check if person is None (not found)
+        if person is None:
+            return jsonify({"error": "User not found"}), 404
+        
+        result = person_schema.dump(person)
+        return jsonify(result)
+    
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500 
+    
 #Update person. 
 @app.route("/api/<user_id>", methods= ["PUT"])
 def update_person(user_id):
-    #fetch person
-    person = Person.query.get(user_id)
-    #get field from request body
-    name = request.json['name']
-    #Get a new person to submit to the database
-    person.name = name
-    #save
-    db.session.commit()
+    try:
+        #fetch person
+        person = Person.query.get(user_id)
+        
+        #check is user exist
+        if person is None:
+            return jsonify({"error": "User not found"}), 404
+        
+        #get field from request body
+        name = request.json['name']
+        #Get a new person to submit to the database
+        person.name = name
+        #save
+        db.session.commit()
 
-    return person_schema.jsonify(person)
+        return person_schema.jsonify(person)
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
 
 #Deleting a person.
 @app.route("/api/<user_id>", methods= ["DELETE"])
 def delete_persons(user_id):
-    person = Person.query.get(user_id)
-    db.session.delete(person)
-    db.session.commit()
+    try:
+        person = Person.query.get(user_id)
+
+        # Check if person exist
+        if person is None:
+            return jsonify({"error": "No such user"}), 404
+        
+        db.session.delete(person)
+        db.session.commit()
+        
+        return person_schema.jsonify(person)
     
-    return person_schema.jsonify(person)
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500 
 
 
 #Get all persons

@@ -1,4 +1,4 @@
-Stage 2 - A simple CRUD Api written in PYTHON.
+#**Stage 2 - A simple CRUD Api written in PYTHON.**
 Description
 This API is written in the Python programming language, and uses SQLALchemy as the ORM, Marshmallow and the serializer and deserializer and msqlite database.
 
@@ -6,8 +6,6 @@ It allows a user to create a person, find a person, update a person and also del
 
 Outline
 The project's entry point is app.py.
-
-
 
 API Documentation
 The API is fully documented, and can be found here.

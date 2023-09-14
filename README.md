@@ -2,7 +2,7 @@
 
 ## **Description**
 
-This API is written in the Python programming language, and uses SQLALchemy as the ORM, Marshmallow as the serializer and deserializer, and SQLite database.
+This API is written in the Python programming language, and uses SQLALchemy as the object relational mapper (ORM), Marshmallow as the serializer and deserializer, and SQLite as database.
 
 It allows a user to create a person, find a person, update a person and also delete a person's data from the database.
 The project's entry point is app.py.

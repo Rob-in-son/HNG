@@ -27,7 +27,7 @@ Error responses are standardized but can be further customized to meet specific 
 
 ## **Local Setup:**
 
-* Ensure you have Python installed
+* Install the latest Python version
 * Install your virtual environment
   ```python3 -m venv venv```
 * Activate your virtual environment

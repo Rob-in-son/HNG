@@ -1,23 +1,33 @@
 # **Stage 2 - A simple CRUD Api written in PYTHON.**
 
-Description
-This API is written in the Python programming language, and uses SQLALchemy as the ORM, Marshmallow and the serializer and deserializer and msqlite database.
+## **Description**
+
+This API is written in the Python programming language, and uses SQLALchemy as the ORM, Marshmallow as the serializer and deserializer, and SQLite database.
 
 It allows a user to create a person, find a person, update a person and also delete a person's data from the database.
 
 Outline
-The project's entry point is app.py.
+The project's entry poinandt is app.py.
 
-API Documentation
-The API is fully documented, and can be found here.
+## **API Documentation**
+
+The API is fully documented, and can be found [here](https://documenter.getpostman.com/view/29597896/2s9YC4VtXE).
 
 Testing
-Unit tests/feature tests were not part of the requirements, but from the API docs, you will be able to test it on Postman.
+Unit tests/feature tests were not part of the requirements, but from the API docs in the link above, you will be able to test it on Postman.
 
-Local Setup:
-Ensure you have your virtual environment installed and activated
-Python and Flask installed.
-Clone this repository.
-Install the required dependencies listed in requirements.txt.
-Run the application using python app.py
-The API is now ready for use!
+## **Known Limitations and Assumptions**
+
+This API assumes that person records are uniquely identified by their user_id.
+The API uses a SQLite database for simplicity. In a production environment, a more robust database solution should be considered.
+Error responses are standardized but can be further customized to meet specific requirements.
+
+## **Local Setup:**
+
+* Ensure you have your virtual environment installed and activated
+* Python and Flask installed.
+* Clone this repository.
+* Install the required dependencies listed in requirements.txt.
+* Run the application using 
+  python app.py
+* The API will be accessible locally at <http://127.0.0.1:5000/>.

@@ -24,10 +24,16 @@ Error responses are standardized but can be further customized to meet specific 
 
 ## **Local Setup:**
 
-* Ensure you have your virtual environment installed and activated
-* Python and Flask installed.
+* Ensure you have Python installed 
+  ```sudo apt install python```
+* Install your virtual environment
+  ```python3 -m venv venv```
+* Activate your virtual environment
+  ```source ~/venv/bin/activate```
 * Clone this repository.
+  ```git clone https://github.com/Rob-in-son/HNG.git```
 * Install the required dependencies listed in requirements.txt.
-* Run the application using 
-  python app.py
-* The API will be accessible locally at <http://127.0.0.1:5000/>.
+  ```pip install -r requirements.txt```
+* Run the application using
+  ``` python app.py ```
+* The API will be accessible locally at <http://127.0.0.1:5000/>

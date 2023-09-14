@@ -40,4 +40,4 @@ Error responses are standardized but can be further customized to meet specific 
   ```pip install -r requirements.txt```
 * Run the application using
   ``` python app.py ```
-* The API will be accessible locally at <http://127.0.0.1:5000/>
+* The API will be accessible locally at <http://127.0.0.1:5000/api>

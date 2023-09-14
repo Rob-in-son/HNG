@@ -2,7 +2,7 @@
 
 ## **Description**
 
-This API is written in the Python programming language, and uses SQLALchemy as the object relational mapper (ORM), Marshmallow as the serializer and deserializer, and SQLite as database.
+This API is written in the Python programming language, and uses SQLALchemy as the object -relational mapper (ORM), Marshmallow as the serializer and deserializer, and SQLite as the database.
 
 It allows a user to create a person, find a person, update a person and also delete a person's data from the database.
 The project's entry point is app.py.
@@ -18,7 +18,7 @@ The API is fully documented, and can be found [here](https://documenter.getpostm
 ## Testing
 
 Unit tests/feature tests were not part of the requirements, but from the API docs in the link above, you will be able to test it on Postman.
-The API is deployed to [robinsonuche.onrender.com](https://robinsonuche.onrender.com/api/)
+The API is deployed to [robinsonuche.onrender.com](https://robinsonuche.onrender.com/api)
 
 ## **Known Limitations and Assumptions**
 

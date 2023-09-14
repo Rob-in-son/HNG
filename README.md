@@ -18,6 +18,7 @@ The API is fully documented, and can be found [here](https://documenter.getpostm
 ## Testing
 
 Unit tests/feature tests were not part of the requirements, but from the API docs in the link above, you will be able to test it on Postman.
+The API is deployed to [robinsonuche.onrender.com](https://robinsonuche.onrender.com/api/)
 
 ## **Known Limitations and Assumptions**
 

@@ -24,8 +24,7 @@ Error responses are standardized but can be further customized to meet specific 
 
 ## **Local Setup:**
 
-* Ensure you have Python installed (assuming you're using a debian based OS)
-  ```sudo apt install python```
+* Ensure you have Python installed 
 * Install your virtual environment
   ```python3 -m venv venv```
 * Activate your virtual environment

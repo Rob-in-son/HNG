@@ -145,7 +145,7 @@ def delete_persons(user_id):
 
 
 #Get all persons
-@app.route("/api/", methods= ["GET"])
+@app.route("/api", methods= ["GET"])
 def all_persons():
     all_person = Person.query.all()
     result = persons_schema.dump(all_person)

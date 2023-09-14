@@ -1,4 +1,5 @@
-#**Stage 2 - A simple CRUD Api written in PYTHON.**
+# **Stage 2 - A simple CRUD Api written in PYTHON.**
+
 Description
 This API is written in the Python programming language, and uses SQLALchemy as the ORM, Marshmallow and the serializer and deserializer and msqlite database.
 
